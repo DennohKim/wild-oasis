@@ -1,4 +1,13 @@
-import styled from "styled-components";
+/* eslint-disable no-unused-vars */
+import { NavLink } from 'react-router-dom';
+import styled from 'styled-components';
+import {
+  HiOutlineCalendar,
+  HiOutlineCog,
+  HiOutlineHome,
+  HiOutlineUser,
+} from 'react-icons/hi';
+import { Building2Icon } from 'lucide-react';
 
 const NavList = styled.ul`
   display: flex;
@@ -6,7 +15,7 @@ const NavList = styled.ul`
   gap: 0.8rem;
 `;
 
-const Link = styled.a`
+const StyledNavLink = styled(NavLink)`
   &:link,
   &:visited {
     display: flex;
@@ -26,7 +35,7 @@ const Link = styled.a`
   &.active:link,
   &.active:visited {
     color: var(--color-grey-800);
-    background-color: var(--color-grey-50);
+    background-color: var(--color-grey-100);
     border-radius: var(--border-radius-sm);
   }
 
@@ -44,3 +53,44 @@ const Link = styled.a`
     color: var(--color-brand-600);
   }
 `;
+
+function MainNav() {
+  return (
+    <nav>
+      <NavList>
+        <li>
+          <StyledNavLink to='/dashboard'>
+            <HiOutlineHome />
+            Home
+          </StyledNavLink>
+        </li>
+        <li>
+          <StyledNavLink to='/bookings'>
+            <HiOutlineCalendar />
+            Bookings
+          </StyledNavLink>
+        </li>
+        <li>
+          <StyledNavLink to='/cabins'>
+            <Building2Icon />
+            Cabins
+          </StyledNavLink>
+        </li>
+        <li>
+          <StyledNavLink to='/users'>
+            <HiOutlineUser />
+            Users
+          </StyledNavLink>
+        </li>
+        <li>
+          <StyledNavLink to='/settings'>
+            <HiOutlineCog />
+            Settings
+          </StyledNavLink>
+        </li>
+      </NavList>
+    </nav>
+  );
+}
+
+export default MainNav;
